@@ -1,0 +1,15 @@
+<?=$this->doctype()?>
+<html lang="en"> 
+    <head>
+        <?=$this->headTitle()?>
+        <?=$this->headMeta()?>
+        <?=$this->headLink()?>
+        <?=$this->headScript()?>
+        <?=$this->headStyle()?>
+        
+    </head>
+    <body id="<?php echo $this->idBody ?>" class="<?php echo $this->classBody ?>" >
+          <?=$this->render('_messages.phtml');?>
+        <?php echo $this->layout()->content ?>
+    </body>    
+</html>
