@@ -4,14 +4,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Administrador OferTop</title>
-        <link rel="stylesheet" href="<?php echo MEDIA_URL?>/css/styles/bootstrap/datepicker.css"/>
+        <title>Administrador</title>
         <link rel="stylesheet" href="<?php echo MEDIA_URL?>/css/styles/admin.css"/>
         <link rel="stylesheet" href="<?php echo MEDIA_URL?>/css/styles/patch.css"/>        
         
         <?php echo $this->headLink()?>        
     </head>
-    <body id="loginbox">
+    <body>
     <?php
             $ruta=Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector')->getRequest()->getRequestUri();
             if($ruta=='/retailer')

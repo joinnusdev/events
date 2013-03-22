@@ -1,6 +1,6 @@
 <?php
 
-class Admin_AuthController extends App_Controller_Action_Admin
+class Admin_AuthController extends Zend_Controller_Action
 {
 
     public function init()
