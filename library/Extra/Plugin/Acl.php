@@ -41,73 +41,32 @@ class Extra_Plugin_Acl
 
             $user = (object)$auth->getStorage()->read();
             
-            $roleName = $user->rol_id;
-            if ($roleName == 1) {
-                $module = $this->_module;
-                if ($module == "retailer") {
-                    $request->setModuleName("admin");
-                    $request->setControllerName("index");
-                    $request->setActionName("index");
-                    return;
-                } else {
-                    $request->setModuleName($module);
-                    if($this->_controller=="estadisticas")
-                            $this->_controller="index";
-                    $request->setControllerName($this->_controller);
-                    $request->setActionName($this->_action);
-                    return;
-                }
-            }
-            if ($roleName == 2) {
-                $module = $this->_module;
-                if ($module == "retailer") {
-                    $request->setModuleName("admin");
-                    $request->setControllerName("index");
-                    $request->setActionName("index");
-                    return;
-                } else {
-                    $request->setModuleName($module);
-                    if($this->_controller=="estadisticas")
-                            $this->_controller="index";
-                    $request->setControllerName($this->_controller);
-                    $request->setActionName($this->_action);
-                    return;
-                }
-            }
-            if ($roleName == 3) {
-                if ($this->_module != "admin") {
-                    $request->setModuleName($this->_module);
-                    $request->setControllerName($this->_controller);
-                    $request->setActionName($this->_action);
-                } else {
-                    $request->setModuleName('retailer');
-                    $request->setControllerName('index');
-                    $request->setActionName('index');
-                }
-                return;
-            }
-            if ($roleName == 4) {
-                if ($this->_module != "admin" AND $this->_module != "retailer") {
-                    $request->setModuleName($this->_module);
-                    $request->setControllerName($this->_controller);
-                    $request->setActionName($this->_action);
-                } else {
-                    $request->setModuleName('default');
-                    $request->setControllerName('index');
-                    $request->setActionName('index');
-                }
-                return;
-            }
-            if ($roleName == 6) {
-                $module = $this->_module;
-                $controller = $this->_controller;
+            $tipoUsuario = $user->tipoUsuario;
+            $module = $this->_module;
+            
+            if ($tipoUsuario == 1) {
+                
+                
                 if ($module == "admin") {
                     $request->setModuleName("admin");
-                    $request->setControllerName("estadisticas");
-                    $request->setActionName($this->_action);
+                    $request->setControllerName("producto");
+                    $request->setActionName("index");
                     return;
                 } else {
-                    $request->setModuleName($this->_module);
+                    $request->setModuleName($module);                    
+                    $request->setControllerName($this->_controller);
+                    $request->setActionName($this->_action);
+                    return;
+                }
+            }
+            if ($tipoUsuario == 2) {
+                if ($module != "admin") {
+                    $request->setModuleName("default");
+                    $request->setControllerName("index");
+                    $request->setActionName("index");
+                    return;
+                } else {
+                    $request->setModuleName($module);
                     $request->setControllerName($this->_controller);
                     $request->setActionName($this->_action);
                     return;

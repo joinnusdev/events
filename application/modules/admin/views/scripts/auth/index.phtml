@@ -1,4 +1,4 @@
-<form class="" method="post" enctype="multipart/form-data" autocomplete="off">
+<form class="" method="post" enctype="multipart/form-data">
 <div class="container">
     <div class="row">
         <div class="alert-message warning span5 offset4" id="hint">            
@@ -17,19 +17,15 @@
                 </tr>
                 <tr>
                     <td>Email : </td>
-                    <td><input type="text" name="email"/> </td>
+                    <td><input type="text" name="email" required="required"/> </td> 
                 </tr>
                 <tr>
                     <td>Password : </td>
-                    <td><input type="password" name="clave"/></td>
+                    <td><input type="password" name="clave" required="required"/></td>
                 </tr>
                 <tr style="text-align: center">
-                    <td colspan="2"><input type="button" class="btn" name="email" value="INGRESAR"/></td>
+                    <td colspan="2"><input type="submit" class="btn" name="ingresar" value="INGRESAR"/></td>
                 </tr>
-                <tr>
-                    <td colspan="2"><?php //echo $this->form->auth_hash ?></td>
-                    <input type="hidden" name="csrf" id="csrf" value="<?php echo $this->csrf?>"/>
-                </tr>                
             </table>
         </div>
     </div>

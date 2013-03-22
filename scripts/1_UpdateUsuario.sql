@@ -1,0 +1,4 @@
+ALTER TABLE `usuario` 
+   ADD COLUMN `ultimaIp` CHAR(20) DEFAULT '127.0.0.1' NULL AFTER `celular`;
+
+insert into `usuario` (`nombre`, `apellidoPaterno`, `apellidoMaterno`, `sexo`, `fechaNacimiento`, `tipoDocumento`, `nroDocumento`, `idDepartamento`, `idProvincia`, `idDistrito`, `email`, `clave`, `direccion`, `tipoUsuario`, `estado`, `fechaRegistro`, `fechaUltimoAcceso`, `telefono`, `celular`, `ultimaIp`) values('nuevo','nuevo','nuevo','Masculino','2000-10-10','DNI','10414174','1','1','1','nuevo@nuevo.com','e10adc3949ba59abbe56e057f20f883e','nosera','1','1','2010-10-10 00:00:00','2010-10-10 00:00:00','4654564','564654654','127.0.0.1');
