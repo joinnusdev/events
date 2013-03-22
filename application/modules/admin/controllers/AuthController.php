@@ -3,10 +3,7 @@
 class Admin_AuthController extends App_Controller_Action
 {
 
-    public function init()
-    {
-        parent::init();
-    }
+    
     
     public function indexAction()
     {       	
@@ -28,7 +25,7 @@ class Admin_AuthController extends App_Controller_Action
                 $this->_helper->redirector->gotoUrl('/admin/producto');
             }
             else {
-                echo "nada";exit;
+                $this->_helper->redirector->gotoUrl('/admin/');
             }
 
             $this->_flashMessenger->addMessage("Intentelo nuevamente datos incorrectos");
