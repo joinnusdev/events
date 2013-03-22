@@ -33,8 +33,26 @@ class Admin_AuthController extends App_Controller_Action
 
             $this->_flashMessenger->addMessage("Intentelo nuevamente datos incorrectos");
         }
+    } 
+    public function logoutAction()
+    {       	
+        $this->_helper->layout->disableLayout();
+        $auth = Zend_Auth::getInstance();
         
-        
+        if ($auth->hasIdentity()) {            
+            $data = $auth->getStorage()->read();
+           
+            $auth->clearIdentity();
+            if ($data->tipoUsuario == 1)
+                $this->_helper->redirector->gotoUrl('/admin');
+            
+            $this->_helper->redirector->gotoUrl('/');
+            
+            
+        } else {
+            $this->_helper->redirector->gotoUrl('/');
+        }
+
     } 
 
 }

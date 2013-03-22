@@ -45,19 +45,13 @@ class Extra_Plugin_Acl
             $module = $this->_module;
             
             if ($tipoUsuario == 1) {
-                
-                
                 if ($module == "admin") {
                     $request->setModuleName("admin");
-                    $request->setControllerName("producto");
-                    $request->setActionName("index");
-                    return;
-                } else {
-                    $request->setModuleName($module);                    
                     $request->setControllerName($this->_controller);
                     $request->setActionName($this->_action);
                     return;
                 }
+                
             }
             if ($tipoUsuario == 2) {
                 if ($module != "admin") {
@@ -80,9 +74,7 @@ class Extra_Plugin_Acl
                 $request->setActionName('index');
                 return;
             } else {                
-                $request->setModuleName('');
-                $request->setControllerName('');
-                $request->setActionName('');
+                $request->setModuleName('/');
                 return;
             }
             
