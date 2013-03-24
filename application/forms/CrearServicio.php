@@ -6,39 +6,20 @@ class App_Form_CrearServicio extends App_Form
         
         parent::init();
         
-        $e = new Zend_Form_Element_Text('idServicio');
+        $e = new Zend_Form_Element_Text('idservicio');
         $e->setAttrib('class', 'span8');  
         $this->addElement($e);
         
-        $e = new Zend_Form_Element_Text('descripcionServicio');
+        $e = new Zend_Form_Element_Text('nombreServicio');
         $e->setAttrib('class', 'span8');
         $e->setFilters(array("StripTags", "StringTrim"));
         $e->setRequired(true);
-        $this->addElement($e);
-        
-        $e = new Zend_Form_Element_Text('precio');
-        $e->setRequired(true);
-        $e->setFilters(array("StripTags", "StringTrim", "HtmlEntities"));
-        $e->setAttrib('class', 'span8');
-        $this->addElement($e);
-        
-        $e = new Zend_Form_Element_Select('idTipoMoneda');
-        $e->addMultiOption('', 'Seleccione');
-        $e->addMultiOption('1', 'Soles');
-        $e->addMultiOption('2', 'Dolares');
-        $e->setRequired();
         $this->addElement($e);
         
         $e = new Zend_Form_Element_Submit('guardar');
         $e->setLabel('Guardar')->setAttrib('class', 'btn pull-right');
         $this->addElement($e);
         
-        
-        $e = new Zend_Form_Element_Textarea('apuntes');
-        
-        $e->setFilters(array("StripTags", "StringTrim"));
-        $e->setRequired(true);
-        $this->addElement($e);
         
         $this->addElement('hash', 'csrf', array(
                     'ignore' => true,

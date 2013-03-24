@@ -5,8 +5,12 @@ class App_Form_CrearUsuario extends App_Form
     public function init() {
         parent::init();
         
+        $e = new Zend_Form_Element_Text('idusuario');
+        $e->setAttrib('class', 'span8');  
+        $this->addElement($e);
+        
         // name
-        $e = new Zend_Form_Element_Text('nombreUsuario');
+        $e = new Zend_Form_Element_Text('nombre');
         $e->setLabel('Nombre');
         $e->setRequired();
         $v = new Zend_Validate_StringLength(array('min'=>1,'max'=>45));
@@ -14,21 +18,22 @@ class App_Form_CrearUsuario extends App_Form
         $this->addElement($e);
 
         // lastname
-        $e = new Zend_Form_Element_Text('apellidoUsuario');
+        $e = new Zend_Form_Element_Text('apellido');
         $e->setLabel('Apellidos');
         $v = new Zend_Validate_StringLength(array('min'=>1,'max'=>45));
         $e->addValidator($v);
         $this->addElement($e);
         
         // usuario
-        $e = new Zend_Form_Element_Text('usuario');
-        $e->setLabel('Usuario');
-        $e->setRequired();
-        $v = new Zend_Validate_StringLength(array('min'=>1,'max'=>45));
+         $e = new Zend_Form_Element_Text('email');
+        $e->setAttrib('class', 'span8');
+        $e->setFilters(array("StripTags", "StringTrim"));
+        $v = new Zend_Validate_EmailAddress();
         $e->addValidator($v);
+        $e->setRequired(true);
+        $e->addFilter(new Zend_Filter_HtmlEntities());
         $this->addElement($e);
-
-
+        
         // pwd
         $e = new Zend_Form_Element_Password('clave');
         $e->setLabel('Password');
@@ -37,33 +42,19 @@ class App_Form_CrearUsuario extends App_Form
         $e->addValidator($v);
         $this->addElement($e);
         
-        // role
-        $e = new Zend_Form_Element_Select('tipoUsuario');
-        
-        /*$e->addMultiOptions(App_Model_User::getRoles());
-        $e->setValue(App_Model_User::ROLE_USER);*/
-       
-        /*$modeloTipoUsuario = new App_Model_TipoUsuario();
-        $lista = $modeloTipoUsuario->getTipoUsuario();
-        print_r($lista);
-        foreach($lista as $row){
-            $e->addMultiOption($row->idTipoUsuario, $row->descripcion);
-        }*/
-        $e->addMultiOption('', 'Seleccione');
-        $e->addMultiOption('1', 'Admin');
-        $e->addMultiOption('2', 'Counter');
-        $e->addMultiOption('3', 'Estilista');
-        //$e->setRequired();
-        $this->addElement($e);
-        
-       
-        
         // submit
         $e = new Zend_Form_Element_Submit('guardar');
         $e->setLabel('Guardar');
         $e->setAttrib('class', 'btn primary');
         $this->addElement($e);
         
+        $this->addElement('hash', 'csrf');
+        
+         foreach($this->getElements() as $e) {
+            $e->removeDecorator('DtDdWrapper');
+            $e->removeDecorator('Label');
+            $e->removeDecorator('HtmlTag');
+        } 
     }
 }
 

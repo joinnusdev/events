@@ -9,8 +9,8 @@ class App_Model_Usuario extends App_Db_Table_Abstract {
 
     protected $_name = 'usuario';    
 
-    const ESTADO_ACTIVO = 1;
-    const ESTADO_ELIMINADO = 0;
+    const ESTADO_ACTIVO = '1';
+    const ESTADO_ELIMINADO = '0';
     const TABLA_USUARIO = 'usuario';
     const TIPO_CLIENTE = 2;
     const TIPO_ADMIN = 1;
@@ -92,6 +92,16 @@ class App_Model_Usuario extends App_Db_Table_Abstract {
         return $this->_guardar($datos);
     }
    
+    public function listarUsuario() 
+    {
+        $query = $this->getAdapter()
+                ->select()->from(array('u' => $this->_name))
+                ->where('u.estado = ?', App_Model_Usuario::ESTADO_ACTIVO)
+                ->where('u.tipoUsuario = ?', App_Model_Usuario::TIPO_ADMIN)
+                ->limit(50);
+
+        return $this->getAdapter()->fetchAll($query);
+    }
     
     public function getUsuarioPorId($id, $tipo = NULL) 
     {

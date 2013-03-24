@@ -22,7 +22,7 @@ class Admin_AuthController extends App_Controller_Action
             
             if (Zend_Auth::getInstance()->hasIdentity()) {
                 
-                $this->_helper->redirector->gotoUrl('/admin/usuario');
+                $this->_helper->redirector->gotoUrl('/admin/cliente');
             }
             else {
                 $this->_helper->redirector->gotoUrl('/admin/');

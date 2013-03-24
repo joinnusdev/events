@@ -1,0 +1,67 @@
+<ul class="breadcrumb">    
+    <li>
+        <a href="/admin/proveedor">Proveedor</a> <span class="divider">/</span>
+    </li>    
+</ul>
+<div id="content_wrapper">
+     <div id="content">
+         <div class="inner">
+             <form action="" method="post" enctype="multipart/form-data" class="well">
+                <div class="header">
+                    <h3>Editar Proveedor</h3>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="clear"></div>
+                        <label for="razonSocial" class="span5 no-margin">Razon Social:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->razonSocial->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->razonSocial->hasErrors()) echo "Ingresa Nombre";?>
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="tipoDocumento" class="span5 no-margin">Tipo Documento:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->tipoDocumento->setAttrib('class', 'span12')->setAttrib('maxlength', '10')->renderViewHelper();?>                            
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="nroDocumento" class="span5 no-margin">Número Documento:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->numeroDocumento->setAttrib('class', 'span12')->setAttrib('maxlength', '10')->renderViewHelper();?>
+                        </div>    
+                        
+                        
+                        <div class="clear"></div>
+                        <label for="email" class="span5 no-margin">Correo:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->correo->setAttrib('class', 'span12')->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->correo->hasErrors()) echo "Ingresa un Correo válido";?>
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="telefono" class="span5 no-margin">Número telefónico:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->telefono->setAttrib('class', 'span12')->setAttrib('maxlength', '10')->renderViewHelper();?>
+                            
+                        </div>    
+                        <div class="clear"></div>
+                        <label for="celular" class="span5 no-margin">Celular:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->celular->setAttrib('class', 'span12')->setAttrib('maxlength', '12')->renderViewHelper();?>
+                        </div>
+                        <div class="clear"></div>
+                        <?php echo $this->form->csrf; ?>
+                        <?php if ($this->form->csrf->hasErrors()) echo "Intentalo nuevamente";?>
+                    </div>
+                    <div class="clear"></div>
+                                        
+                </div>
+                <div class="form-actions">
+                    <?php echo $this->form->guardar->setAttrib('class', 'btn pull-right')?>                    
+                </div>
+        </form>
+    </div>
+ </div>
+</div>
+
