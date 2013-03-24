@@ -6,13 +6,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">EVENTS VICTORIA</a>
+          <a class="brand" href="#">OFERTOP</a>
           <div class="nav-collapse collapse">
             <?             
             if($this->isAuth): ?>
                 <p class="navbar-text pull-right">
                     Bienvenido
-                    <a href="#"><?php //echo $this->authData->nombreUsuario." ".$this->authData->apellidoUsuario;?></a>
+                    <a href="#"><?php echo $this->authData->nombre." ".$this->authData->apellidoPaterno;?></a>
                     <a href="/admin/auth/logout">[Cerrar Sesión]</a>
                 </p>
             <? endif; ?>

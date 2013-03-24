@@ -37,18 +37,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $v->headTitle($config->resources->view->title)->setSeparator(' - ');
         $v->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=utf-8');
         $v->headMeta()->appendName("robots", "noindex, nofollow"); // for development
-        $v->headMeta()->appendName("author", "Steve Villano Esteban jsteve.villano@gmail.com");
-        $v->headMeta()->appendName("description", "Spa System"); //
+        $v->headMeta()->appendName("author", "---");
+        $v->headMeta()->appendName("description", "Eventos"); //
         $v->headMeta()->setCharset("utf-8");
-        //$v->headLink()->appendStylesheet($v->s('/css/normalize.css'));                
         
-        $v->headLink()->appendStylesheet($v->s('/css/bootstrap3.min.css'), 'all');
+        /*$v->headLink()->appendStylesheet($v->s('/css/bootstrap3.min.css'), 'all');
         $v->headLink()->appendStylesheet($v->s('/css/styles/admin.css'), 'all');
         $v->headLink()->appendStylesheet($v->s('/css/main.css'), 'all');
-        $v->headLink()->appendStylesheet($v->s('/css/fixie.css'), 'all', 'lte IE 8');
+        $v->headLink()->appendStylesheet($v->s('/css/fixie.css'), 'all', 'lte IE 8');*/
 
         $v->headScript()->appendFile($v->s('/js/jquery-1.8.1.min.js'));
-        //$v->headScript()->appendFile($v->s('/js/bootstrap-alerts.js'));
         $v->headScript()->appendFile($v->s('/js/bootstrap.min.js'));
         
         $v->headScript()->appendFile($v->s('/js/main.js'));            

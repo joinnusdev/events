@@ -24,7 +24,7 @@ class App_Controller_Action extends Zend_Controller_Action
         $this->_identityAdmin = Zend_Auth::getInstance()->getIdentity();
         //$this->view->idTipoUsuario = $this->_identityAdmin->idTipoUsuario;
         
-        parent::init();
+        //parent::init();
         
     }
 
