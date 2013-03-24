@@ -8,11 +8,11 @@
 class App_Model_Cliente extends App_Db_Table_Abstract
 {
 
-    protected $_name = 'cliente';
+    protected $_name = 'usuario';
 
     const ESTADO_ACTIVO = 1;
     const ESTADO_ELIMINADO = 0;
-    const TABLA_CLIENTE = 'cliente';
+    const TABLA_CLIENTE = 'usuario';
     
     /**
      * @param array $datos
@@ -54,12 +54,11 @@ class App_Model_Cliente extends App_Db_Table_Abstract
         return $this->getAdapter()->fetchRow($query);
     }
 
-    public function lista() 
+    public function listarCliente() 
     {
         $query = $this->getAdapter()
                 ->select()->from(array('c' => $this->_name))
                 ->where('c.estado = ?', App_Model_Cliente::ESTADO_ACTIVO)
-                ->order('fechaUltimaVisita')
                 ->limit(50);
 
         return $this->getAdapter()->fetchAll($query);

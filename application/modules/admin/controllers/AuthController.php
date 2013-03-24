@@ -21,8 +21,8 @@ class Admin_AuthController extends App_Controller_Action
             $valido = $usuario->loguinUsuario($email, $clave, array(App_Model_Usuario::TIPO_ADMIN));
             
             if (Zend_Auth::getInstance()->hasIdentity()) {
-                echo "entro";exit;
-                $this->_helper->redirector->gotoUrl('/admin/producto');
+                
+                $this->_helper->redirector->gotoUrl('/admin/usuario');
             }
             else {
                 $this->_helper->redirector->gotoUrl('/admin/');

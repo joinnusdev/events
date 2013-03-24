@@ -6,6 +6,7 @@ extras/documentation
 /library/Zend/
 /library/Zend/*
 library/Zend/
+logs/
 
 
 
