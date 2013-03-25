@@ -2628,12 +2628,13 @@ input[type="submit"].btn.btn-mini {
   padding: 8px 35px 8px 14px;
   margin-bottom: 18px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  background-color: #8bc5e8;
-  border: 1px solid #7ed0e5;
+  background-color: #FFF68F;
+  border: 1px solid #FFFF00;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   color: #1c628b;
+  text-align: center;
 }
 .alert-heading {
   color: inherit;
