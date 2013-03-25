@@ -81,7 +81,27 @@ class App_Model_Categoria extends App_Db_Table_Abstract
     public function actualizarDatos($datos) 
     {   
         return $this->_guardar($datos);
-    }    
+    }
+    
+    public function updateEstado($id, $est, $tipo) 
+    {   
+        $db = $this->getDefaultAdapter();
+        
+        $update = ($est == 1)?0:1;
+        
+        $data = array(            
+            'estado'       => $update
+            );
+        
+            
+        if ($tipo) 
+            $where = $db->quoteInto('(idcategoria = ' . $id . ' OR categoriaPadre = ' . $id .')');
+        else { 
+            $condicion = 'idcategoria = ' . $id  ;
+            $where = $db->quoteInto($condicion);
+        }
+        $db->update($this->_name, $data, $where);
+    }
     
 
 }

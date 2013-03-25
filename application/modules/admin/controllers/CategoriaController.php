@@ -71,20 +71,53 @@ class Admin_CategoriaController extends App_Controller_Action_Admin
             }
         }
         $this->view->form = $form;
+    }    
+    
+    
+    public function updateestadoAction()
+    {
+        $model = new App_Model_Categoria();
+        $id = $this->_getParam('id');
+        $tipo = $this->_getParam('tipo', '0');
+        $est = $this->_getParam('est');        
+        
+        $model->updateEstado($id, $est, $tipo);
+        $this->_flashMessenger->addMessage("Se actualizo el estado del item");
+        $this->_redirect('/admin/categoria');
     }
     
-    public function eliminarAction()
+    public function agregarSubcategoriaAction()
     {
-        $modelServicio = new App_Model_Servicio();
+        $model = new App_Model_Categoria();
+        $form = new App_Form_CrearCategoria();
         $id = $this->_getParam('id');
-        $data = array(
-            'idservicio' => $id,
-            'estado' => App_Model_Servicio::ESTADO_ELIMINADO
-        );        
         
-        $modelServicio->actualizarDatos($data);
-        $this->_flashMessenger->addMessage("Servicio eliminado con exito");
-        $this->_redirect('/admin/servicio');
+        $categoria = $model->getCategoriaPorId($id);        
+        $this->view->padre = $categoria;
+        
+        if($this->getRequest()->isPost()){
+            
+            $data = $this->getRequest()->getParams();
+            
+            $datos = array(
+                'categoriaPadre' => $id,
+                'descripcion' => $data['descripcion'],
+                'estado' => App_Model_Categoria::ESTADO_ACTIVO,
+            );
+            
+            
+            if ($form->isValid($data)) {                 
+                $id = $model->actualizarDatos($datos);
+                $this->_flashMessenger->addMessage("Sub Categoría Agregada Correctamente");
+                
+                $this->_redirect('/admin/categoria');
+                
+            } else {
+                $form->populate($data);                
+            }
+        }
+        $this->view->form = $form;        
+        
     }
 
 }
