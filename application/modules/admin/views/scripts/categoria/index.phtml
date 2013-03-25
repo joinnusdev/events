@@ -51,9 +51,9 @@
                                     <i class="icon-edit icon-white"></i>  
                                     Editar                                            
                                 </a>
-                                <a class="btn btn-info" href="/admin/categoria/agregar-subcategoria/id/<?php echo $categoria["idcategoria"]; ?>">
-                                    <i class="icon-edit icon-white"></i>  
-                                    Agregar 
+                                <a class="btn btn-info" style="background-image: -webkit-linear-gradient(top, #71BB80, #60B367); color: #000" href="/admin/categoria/agregar-subcategoria/id/<?php echo $categoria["idcategoria"]; ?>">
+                                    <i class="icon-zoom-in icon-white"></i>  
+                                    Agregar Sub
                                 </a>
                                 <a class="btn btn-danger" href="/admin/categoria/updateestado/id/<?php echo $categoria["idcategoria"]; ?>/tipo/1/est/<?php echo $categoria["estado"]; ?>">
                                     <?php echo ($categoria['estado'] == 1)?'Desactivar':'Activar' ?> 
