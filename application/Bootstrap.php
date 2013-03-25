@@ -46,7 +46,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $v->headLink()->appendStylesheet($v->s('/css/main.css'), 'all');
         $v->headLink()->appendStylesheet($v->s('/css/fixie.css'), 'all', 'lte IE 8');*/
 
-        $v->headScript()->appendFile($v->s('/js/jquery-1.8.1.min.js'));
+        /*$v->headScript()->appendFile($v->s('/js/jquery-1.8.1.min.js'));
         $v->headScript()->appendFile($v->s('/js/bootstrap.min.js'));
         
         $v->headScript()->appendFile($v->s('/js/main.js'));            
@@ -56,7 +56,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             array('conditional' => 'lt IE 9')
         );
         $js = sprintf("var urls = {siteUrl : '%s'}", $config->app->siteUrl);
-        $v->headScript()->appendScript($js);
+        $v->headScript()->appendScript($js);*/
         
         
         

@@ -10,6 +10,8 @@ class Admin_ClienteController extends App_Controller_Action_Admin
     
     public function indexAction()
     {      	
+        //$this->_helper->layout->disableLayout();
+        
         $modelUsuario = new App_Model_Cliente();
         $listaCliente = $modelUsuario->listarCliente();
         $this->view->listaCliente = $listaCliente;
