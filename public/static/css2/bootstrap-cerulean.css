@@ -263,7 +263,7 @@ a:hover {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   float: left;
-  margin-left: 2.127659574%;
+  margin-left: -0.872%;
   *margin-left: 2.0744680846382977%;
 }
 .row-fluid [class*="span"]:first-child {
@@ -278,7 +278,7 @@ a:hover {
   *width: 91.4361702036383%;
 }
 .row-fluid .span10 {
-  width: 82.97872339599999%;
+  width: 77.468%;
   *width: 82.92553190663828%;
 }
 .row-fluid .span9 {
