@@ -7,7 +7,7 @@ extras/documentation
 /library/Zend/*
 library/Zend/
 logs/
-
-
-
-
+nbproject/private/private.xml
+nbproject/private/
+/nbproject/private/*
+/nbproject/private/
