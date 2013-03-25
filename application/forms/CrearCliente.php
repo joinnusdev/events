@@ -24,7 +24,7 @@ class App_Form_CrearCliente extends App_Form
         $this->getElement('sexo')->addMultiOption('', 'Seleccione Sexo');
         $this->getElement('sexo')->addMultiOption('Masculino', 'Masculino');
         $this->getElement('sexo')->addMultiOption('Femenino', 'Femenino');
-        $this->getElement('sexo')->setAttrib('class', 'span10');
+        $this->getElement('sexo')->setAttrib('class', 'span13');
         $this->getElement('sexo')->setRequired();
         $this->getElement('sexo')->removeDecorator('htmlTag');
         $this->getElement('sexo')->removeDecorator('Errors');
