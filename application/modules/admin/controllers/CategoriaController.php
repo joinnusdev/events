@@ -119,6 +119,20 @@ class Admin_CategoriaController extends App_Controller_Action_Admin
         $this->view->form = $form;        
         
     }
+    
+    public function getCategoriasAjaxAction()
+    {
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
+        
+        $idCategoria = $this->_getParam('id');
+        
+        $model = new App_Model_Categoria();
+        
+        $result = $model->listaSubcategorias($idCategoria);
+        
+        echo Zend_Json::encode($result);
+    }
 
 }
 

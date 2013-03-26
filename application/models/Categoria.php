@@ -118,5 +118,20 @@ class App_Model_Categoria extends App_Db_Table_Abstract
         
     }
     
+    public function listaSubcategorias($idCategoria) 
+    {
+        $db = $this->getAdapter();
+        
+        $query = $db->select()->from(array('cx' => $this->_name), 
+            array('cx.idcategoria', 'cx.descripcion'))
+            ->where('cx.categoriaPadre = ?', $idCategoria)
+            ->where('cx.estado = ?', self::ESTADO_ACTIVO)
+            ->order('cx.descripcion')
+            ;
+
+        return $this->getAdapter()->fetchAll($query);
+        
+    }
+    
 
 }

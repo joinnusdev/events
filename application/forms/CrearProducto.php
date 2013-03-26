@@ -42,7 +42,8 @@ class App_Form_CrearProducto extends App_Form
         
         $e = new Zend_Form_Element_Select('subcategoria');
         $e->setAttrib('class', 'span12');
-        $e->addMultiOptions(array('0' => '--- Seleccionar ---'));
+        $e->setAttrib('disabled', 'disabled');
+        //$e->addMultiOptions(array('0' => '--- Seleccionar ---'));
         $this->addElement($e);
         
         $e = new Zend_Form_Element_Text('fechaInicio');

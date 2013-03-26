@@ -17,16 +17,14 @@ class Admin_ProductoController extends App_Controller_Action_Admin
     public function crearAction()
     {       	
         //datepicker
-        $this->view->headLink()->appendStylesheet(
+        /*$this->view->headLink()->appendStylesheet(
             $this->getConfig()->app->mediaUrl . '/css/datepicker-bootstrap/datepicker.css'
-        );
-        $this->view->headScript()->appendFile(
-            $this->getConfig()->app->mediaUrl . '/js/datepicker-bootstrap/bootstrap-datepicker.js'
-        );
+        );*/        
+        
+        
         $form = new App_Form_CrearProducto();
         $this->view->form = $form; 
         if($this->getRequest()->isPost()){            
-            
             $data = $this->getRequest()->getPost();
             
             if ($form->isValid($data)) {
