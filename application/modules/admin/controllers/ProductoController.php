@@ -23,7 +23,7 @@ class Admin_ProductoController extends App_Controller_Action_Admin
         $this->view->headScript()->appendFile(
             $this->getConfig()->app->mediaUrl . '/js/datepicker-bootstrap/bootstrap-datepicker.js'
         );
-        $form = new App_Form_CrearCliente();
+        $form = new App_Form_CrearProducto();
         $this->view->form = $form; 
         if($this->getRequest()->isPost()){            
             

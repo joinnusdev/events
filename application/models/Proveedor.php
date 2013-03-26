@@ -99,5 +99,16 @@ class App_Model_Proveedor extends App_Db_Table_Abstract
 
         return $db->fetchAll($select);
     }
+    
+    public function proveedorCombo() 
+    {
+        $query = $this->getAdapter()
+                ->select()->from(array('p' => $this->_name), 
+                    array('idproveedor', 'razonSocial'))
+                ->where('p.estado = ?', App_Model_Proveedor::ESTADO_ACTIVO)
+                ->limit(50);
+
+        return $this->getAdapter()->fetchPairs($query);
+    }
 
 }

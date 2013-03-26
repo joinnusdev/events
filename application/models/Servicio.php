@@ -57,11 +57,23 @@ class App_Model_Servicio extends App_Db_Table_Abstract
     public function listarServicio() 
     {
         $query = $this->getAdapter()
-                ->select()->from(array('s' => $this->_name))
+                ->select()->from(array('s' => $this->_name), 
+                    array('idServicio', 'nombreServicio'))
                 ->where('s.estado = ?', App_Model_Servicio::ESTADO_ACTIVO)
                 ->limit(50);
 
         return $this->getAdapter()->fetchAll($query);
+    }
+    
+    public function comboServicio() 
+    {
+        $query = $this->getAdapter()
+                ->select()->from(array('s' => $this->_name), 
+                    array('idServicio', 'nombreServicio'))
+                ->where('s.estado = ?', App_Model_Servicio::ESTADO_ACTIVO)
+                ->limit(50);
+
+        return $this->getAdapter()->fetchPairs($query);
     }
 
     public function actualizarDatos($datos) 

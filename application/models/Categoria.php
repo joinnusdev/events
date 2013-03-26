@@ -103,5 +103,20 @@ class App_Model_Categoria extends App_Db_Table_Abstract
         $db->update($this->_name, $data, $where);
     }
     
+    public function listarPadres() 
+    {
+        $db = $this->getAdapter();
+        
+        $query = $db->select()->from(array('cx' => $this->_name), 
+            array('cx.idcategoria', 'cx.descripcion'))
+            ->where('cx.categoriaPadre IS NULL')
+            ->where('cx.estado = ?', self::ESTADO_ACTIVO)
+            ->order('cx.descripcion')
+            ;
+
+        return $this->getAdapter()->fetchPairs($query);
+        
+    }
+    
 
 }
