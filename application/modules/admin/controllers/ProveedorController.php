@@ -76,6 +76,22 @@ class Admin_ProveedorController extends App_Controller_Action_Admin
         $this->_redirect('/admin/proveedor');
     }
     
+    
+     public function activarAction()
+    {
+        
+        $modelProveedor = new App_Model_Proveedor();
+        $id = $this->_getParam('id');
+        $data = array(
+            'idproveedor' => $id,
+            'estado' => App_Model_Proveedor::ESTADO_ACTIVO
+        );        
+        
+        $modelProveedor->actualizarDatos($data);
+        $this->_flashMessenger->addMessage("Proveedor Activado con exito");
+        $this->_redirect('/admin/proveedor');
+    }
+    
 
 }
 
