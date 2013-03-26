@@ -158,6 +158,7 @@ class Admin_ProductoController extends App_Controller_Action_Admin
         $id = $this->_getParam('id');
         $producto = $modelProducto->getProductoPorId($id);
         $form->populate($producto);
+        
          
         if($this->getRequest()->isPost()){
             $data = $this->getRequest()->getPost();            

@@ -153,4 +153,55 @@ $(document).ready(function(){
     });    
         
 });
+
+$(function(){
+    
+    var producto = {        
+        init : function() {
+           this.Combo("#categoria", "#subcategoria", "--- Seleccionar ---", "/admin/categoria/get-categorias-ajax", "idcategoria", "descripcion");           
+        },        
+        Combo : function (c, cd, def, url, fieldv, fields) {
+                
+                var actual = $(c);
+                
+                if (actual.val() != 0) {
+                    
+                    $(cd).removeAttr("disabled");
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                           id : actual.val()
+                        },
+                        dataType: 'json',                        
+                        success: function(data){
+                                $(cd).html("<option value='0'> --Seleccionar-- </option>");
+                                $.each(data, function(index, value){
+                                    var select = ' ';
+                                    if (value[fieldv] == '<?php echo $this->producto['subcategoria']?>')
+                                        var selec = 'selected="selected "';
+    
+                                    
+                                    $(cd).append("<option "+ selec +" value='"+value[fieldv]+"'>"+value[fields]+"</option>");
+                                });
+                        }
+                    });                    
+                } else {
+                    $(cd).html("");
+                    $(cd).append("<option value='0'>-- Seleccionar--</option>");
+                    $(cd).attr("disabled", "disabled");
+                    
+                    
+                }
+            
+       }
+    };
+    
+    producto.init();
+    
+    
+    
+});
+
+
 </script>

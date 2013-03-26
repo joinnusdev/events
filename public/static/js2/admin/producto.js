@@ -6,7 +6,8 @@ $(function(){
         },        
         ComboDependiente : function (c, cd, def, url, fieldv, fields) {            
             
-            $(c).live("change blur", function(){                
+            $(c).live("change blur", function(){
+                
                 var actual = $(this);
                 
                 if (actual.val() != 0) {                    
