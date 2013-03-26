@@ -42,3 +42,78 @@ $(function(){
     
     
 });
+
+$("#fotoPrincipal").change(function() {
+
+    var val = $(this).val();
+
+    switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+        case 'gif': case 'jpg': case 'png':  case 'jpeg':   
+            break;
+        default:
+            $(this).val('');
+            // error message here
+            alert("Archivos válidos gif | jpg | png");
+            break;
+    }
+});
+
+$("#foto1").change(function() {
+
+    var val = $(this).val();
+
+    switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+        case 'gif': case 'jpg': case 'png':  case 'jpeg':   
+            break;
+        default:
+            $(this).val('');
+            // error message here
+            alert("Archivos válidos gif | jpg | png");
+            break;
+    }
+});
+
+$("#foto2").change(function() {
+
+    var val = $(this).val();
+
+    switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+        case 'gif': case 'jpg': case 'png':  case 'jpeg':   
+            break;
+        default:
+            $(this).val('');
+            // error message here
+            alert("Archivos válidos gif | jpg | png");
+            break;
+    }
+});
+
+$("#foto3").change(function() {
+
+    var val = $(this).val();
+
+    switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+        case 'gif': case 'jpg': case 'png':  case 'jpeg':   
+            break;
+        default:
+            $(this).val('');
+            // error message here
+            alert("Archivos válidos gif | jpg | png");
+            break;
+    }
+});
+
+$("#foto4").change(function() {
+
+    var val = $(this).val();
+
+    switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+        case 'gif': case 'jpg': case 'png':  case 'jpeg':   
+            break;
+        default:
+            $(this).val('');
+            // error message here
+            alert("Archivos válidos gif | jpg | png");
+            break;
+    }
+});

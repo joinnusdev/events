@@ -42,7 +42,8 @@ class App_Form_CrearProducto extends App_Form
         
         $e = new Zend_Form_Element_Select('subcategoria');
         $e->setAttrib('class', 'span12');
-        $e->setAttrib('disabled', 'disabled');
+        $e->setAttrib('disabled', 'disabled')
+            ->setRegisterInArrayValidator(false);
         //$e->addMultiOptions(array('0' => '--- Seleccionar ---'));
         $this->addElement($e);
         

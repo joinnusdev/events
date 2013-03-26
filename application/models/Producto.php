@@ -22,11 +22,11 @@ class App_Model_Producto extends App_Db_Table_Abstract
     private function _guardar($datos, $condicion = NULL) 
     {
         $id = 0;
-        if (!empty($datos['idcategoria'])) {
-            $id = (int) $datos['idcategoria'];
+        if (!empty($datos['idproducto'])) {
+            $id = (int) $datos['idproducto'];
         } 
         
-        unset($datos['idcategoria']);
+        unset($datos['idproducto']);
         $datos = array_intersect_key($datos, array_flip($this->_getCols()));
 
         if ($id > 0) {
@@ -35,7 +35,7 @@ class App_Model_Producto extends App_Db_Table_Abstract
                 $condicion = ' AND ' . $condicion;
             }
 
-            $cantidad = $this->update($datos, 'idcategoria = ' . $id . $condicion);
+            $cantidad = $this->update($datos, 'idproducto = ' . $id . $condicion);
             $id = ($cantidad < 1) ? 0 : $id;
         } else {
             $id = $this->insert($datos);
@@ -57,13 +57,13 @@ class App_Model_Producto extends App_Db_Table_Abstract
     {
         $db = $this->getAdapter();
         $query = $db->select()->from(array('p' => $this->_name))
-                ->joinInner(array('c' => App_Model_Categoria::TABLA_CATEGORIA), 
+                ->joinLeft(array('c' => App_Model_Categoria::TABLA_CATEGORIA), 
                         'p.idcategoria = c.idcategoria', 
                         array('descripcionCate' => 'descripcion'))
                 ->where('p.estado = ?', self::ESTADO_ACTIVO)
                         ->order('p.fechaInicio desc')
                         ;
-        
+        //echo $query;exit;
         return $this->getAdapter()->fetchAll($query);
         
     }

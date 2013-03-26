@@ -6,7 +6,7 @@
 <div id="content_wrapper">
      <div id="content">
          <div class="inner">
-             <form action="" method="post" enctype="multipart/form-data" class="well">
+             <form action="" method="post" enctype="multipart/form-data" class="well" id="formProd">
                 <div class="header">
                     <h3>Registrar Productos</h3>
                 </div>
@@ -135,4 +135,21 @@
  </div>
 </div>
 
+<script src="<?php echo SITE_URL ?>static/js2/admin/producto.js"></script>
 
+<script>
+$(document).ready(function(){
+    $('#fechaInicio').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn: 'linked',
+        language: 'es'
+    });
+    
+    $('#fechaFin').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn: 'linked',
+        language: 'es'
+    });    
+        
+});
+</script>
