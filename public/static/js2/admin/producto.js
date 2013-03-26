@@ -11,7 +11,7 @@ $(function(){
                 
                 if (actual.val() != 0) {                    
                     
-                    $(cd).removeAttr("disabled");                    
+                    $(cd).removeAttr("disabled");
                     $.ajax({
                         url: url,
                         type: 'post',

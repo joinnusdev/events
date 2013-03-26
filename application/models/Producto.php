@@ -93,5 +93,22 @@ class App_Model_Producto extends App_Db_Table_Abstract
         $db->update($this->_name, $data, $where);
     }
     
+    public function getProductoPorId($id) 
+    {
+        $db = $this->getAdapter();
+        $query = $db->select()->from(array('p' => $this->_name))
+                ->joinLeft(array('c' => App_Model_Categoria::TABLA_CATEGORIA), 
+                        'p.idcategoria = c.idcategoria', 
+                        array('descripcionCate' => 'descripcion', 
+                            'categoria' => 'categoriaPadre',
+                            'subcategoria' => 'idcategoria'
+                            ))
+                ->where('p.estado = ?', self::ESTADO_ACTIVO)
+                ->where('p.idproducto = ?', $id);
+        
+        return $this->getAdapter()->fetchRow($query);
+        
+    }
+    
 
 }

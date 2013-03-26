@@ -1,0 +1,156 @@
+<ul class="breadcrumb">    
+    <li>
+        <a href="/admin/producto">Productos</a> <span class="divider">/</span>
+    </li>    
+</ul>
+<div id="content_wrapper">
+     <div id="content">
+         <div class="inner">
+             <form action="" method="post" enctype="multipart/form-data" class="well" id="formProd">
+                <div class="header">
+                    <h3>Registrar Productos</h3>
+                </div>
+                 <hr />
+                <div class="row-fluid">
+                    <div class="span10">
+                        <div class="clear"></div>
+                        
+                        <label for="nombre" class="span4 no-margin">Código Producto :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->codigo->setAttrib('maxlength', '10')->renderViewHelper();?>
+                            <?php if ($this->form->codigo->hasErrors()) echo "Ingresa Código Correcto";?>
+                        </div>                        
+                        <div class="clear"></div>                                                
+                        
+                        <label for="nombreProducto" class="span4 no-margin">Nombre Producto :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->nombreProducto->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->nombreProducto->hasErrors()) echo "Ingresa nombre para el producto";?>
+                        </div>                                                                        
+                        <div class="clear"></div>
+                        
+                        <label for="servicio" class="span4 no-margin">Servicio :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->idservicio;?>
+                        </div>                                                
+                        <div class="clear"></div>
+                        
+                        <label for="categoria" class="span4 no-margin">Categoria :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->categoria;?>
+                        </div>
+                        <div class="clear"></div>
+                        
+                        <label for="categoria" class="span4 no-margin">Sub - Categoria :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->subcategoria;?>
+                        </div>
+                        <div class="clear"></div>
+                        
+                        <label for="categoria" class="span4 no-margin">Proveedor :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->proveedor;?>
+                        </div>
+                        <div class="clear"></div>
+                        
+                        <label for="fechaInicio" class="span4 no-margin">Fecha Inicio :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->fechaInicio;?>
+                        </div>
+                        <div class="clear"></div>
+                        
+                        <label for="fechaFin" class="span4 no-margin">Fecha Fin :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->fechaFin;?>
+                        </div>
+                        <div class="clear"></div>
+                        
+                        
+                        <label for="precio" class="span4 no-margin">Precio :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->precio->setAttrib('maxlength', '10')->renderViewHelper();?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="stock" class="span4 no-margin">Stock :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->stock->renderViewHelper();?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="descripcionCorta" class="span4 no-margin">Descripción Corta :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->descripcionCorta;?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="descripcionLarga" class="span4 no-margin">Descripción Completa :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->descripcionLarga;?>
+                        </div>                        
+                        <div class="clear"></div>                        
+                        <br>
+                        
+                        <label for="fotoPrincipal" class="span4 no-margin">Foto Principal :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->fotoPrincipal?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="foto1" class="span4 no-margin">Foto :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->foto1?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="foto2" class="span4 no-margin">Foto :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->foto2?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="foto3" class="span4 no-margin">Foto :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->foto3?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <label for="foto4" class="span4 no-margin">Foto :</label>
+                        <div class="span6 no-margin">
+                            <?php echo $this->form->foto4?>
+                        </div>                        
+                        <div class="clear"></div>
+                        
+                        <?php echo $this->form->csrf->renderViewHelper(); ?>
+                        <?php if ($this->form->csrf->hasErrors()) echo "Intentalo nuevamente";?>
+                    </div>
+                    <div class="clear"></div>
+                                        
+                </div>
+                <div class="form-actions">
+                    <?php echo $this->form->guardar->setAttrib('class', 'btn pull-right')?>                    
+                </div>
+        </form>
+    </div>
+ </div>
+</div>
+
+<script src="<?php echo SITE_URL ?>static/js2/admin/producto.js"></script>
+
+<script>
+$("#subcategoria").removeAttr("disabled");
+$(document).ready(function(){
+    $('#fechaInicio').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn: 'linked',
+        language: 'es'
+    });
+    
+    $('#fechaFin').datepicker({
+        format: 'yyyy-mm-dd',
+        todayBtn: 'linked',
+        language: 'es'
+    });    
+        
+});
+</script>

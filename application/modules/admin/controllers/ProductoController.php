@@ -149,7 +149,56 @@ class Admin_ProductoController extends App_Controller_Action_Admin
         }        
         
     } 
-    
+
+    public function editarAction()
+    {
+        $modelProducto = new App_Model_Producto();
+        $form = new App_Form_CrearProducto();
+        
+        $id = $this->_getParam('id');
+        $producto = $modelProducto->getProductoPorId($id);
+        $form->populate($producto);
+         
+        if($this->getRequest()->isPost()){
+            $data = $this->getRequest()->getPost();            
+            $data['idProducto'] = $id;            
+            if ($form->isValidPartial(
+                    array('nombreProducto' => $data['nombreProducto'], 
+                        'precio' => $data['precio']))) {
+                $modelProducto = new App_Model_Producto();
+                $data['usuarioRegistro'] = $this->view->authData->idUsuario;                
+                $cond = array_key_exists("fotoAnt", $data);
+                
+                if (!$cond) {
+                    $foto = $form->foto->getFileName();                    
+                    if (!empty ($foto)) {
+                        $data['foto'] = $id . ".jpeg";
+
+                        $config = Zend_Registry::get('config');
+                        $ruta = $config->app->mediaRoot;
+
+                        $form->foto->addFilter(
+                                'Rename', array(
+                            'target' => $ruta . $id . ".jpeg",
+                            'overwrite' => true)
+                        );
+                        $form->foto->receive();
+                    }
+                }                
+                $id = $modelProducto->actualizarDatos($data);
+                
+                $this->_flashMessenger->addMessage("Producto editado con éxito");
+                $this->_redirect('/producto/');
+            
+            } else {                
+                $form->populate($data);
+                $this->_flashMessenger->addMessage("Verifique sus datos");                
+            }
+        }
+        $this->view->ruta = $this->config->app->mediaRoot;
+        $this->view->form = $form;
+        $this->view->producto = $producto;
+    }
 
 }
 
