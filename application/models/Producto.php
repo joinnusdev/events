@@ -5,14 +5,14 @@
  *
  * @author James
  */
-class App_Model_Categoria extends App_Db_Table_Abstract
+class App_Model_Producto extends App_Db_Table_Abstract
 {
 
-    protected $_name = 'categoria';
+    protected $_name = 'producto';
 
     const ESTADO_ACTIVO = '1';
     const ESTADO_ELIMINADO = '0';
-    const TABLA_CATEGORIA = 'categoria';
+    const TABLA_SERVICIO = 'producto';
     
     /**
      * @param array $datos
@@ -53,28 +53,18 @@ class App_Model_Categoria extends App_Db_Table_Abstract
         return $this->getAdapter()->fetchRow($query);
     }
 
-    public function listarCategorias() 
+    public function listaProductos() 
     {
         $db = $this->getAdapter();
-        $query = $db->select()->from(array('cp' => $this->_name), 
-            array('nombrePapa' => 'cp.descripcion', 'cp.idcategoria', 
-                'cathija' => 'ch.idcategoria', 'padre' => 'ch.categoriaPadre', 
-                'ch.descripcion', 'ch.estado'
-                ))->joinInner(array('ch' => $this->_name), 
-                    'cp.idcategoria = ch.categoriaPadre', array())            
-            ;
-        $queryPadre = $db->select()->from(array('cx' => $this->_name), 
-            array('cx.descripcion', 'cx.idcategoria', 'cx.idcategoria', 
-                'cx.categoriaPadre', 'cx.descripcion', 'cx.estado'))
-            ->where('cx.categoriaPadre IS NULL')            
-            ;
-      
-        $queryfinal = $db->select()->union(array($query, $queryPadre))
-            ->order('idcategoria')
-            ->order('padre ASC')
-            ->order('cathija');        
-//echo $queryfinal;exit;
-        return $this->getAdapter()->fetchAll($queryfinal);
+        $query = $db->select()->from(array('p' => $this->_name))
+                ->joinInner(array('c' => App_Model_Categoria::TABLA_CATEGORIA), 
+                        'p.idcategoria = c.idcategoria', 
+                        array('descripcionCate' => 'descripcion'))
+                ->where('p.estado = ?', self::ESTADO_ACTIVO)
+                        ->order('p.fechaInicio desc')
+                        ;
+        
+        return $this->getAdapter()->fetchAll($query);
         
     }
 

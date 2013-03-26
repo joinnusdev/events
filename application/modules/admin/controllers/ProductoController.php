@@ -9,9 +9,9 @@ class Admin_ProductoController extends App_Controller_Action_Admin
     }
     
     public function indexAction()
-    {       	
-        
-        
+    {
+        $model = new App_Model_Producto();
+        $this->view->producto = $model->listaProductos();
     } 
     
     public function crearAction()
