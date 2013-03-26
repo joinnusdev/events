@@ -12,7 +12,7 @@ class App_Model_Producto extends App_Db_Table_Abstract
 
     const ESTADO_ACTIVO = '1';
     const ESTADO_ELIMINADO = '0';
-    const TABLA_SERVICIO = 'producto';
+    const TABLA_PRODUCTO = 'producto';
     
     /**
      * @param array $datos

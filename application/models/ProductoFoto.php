@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * Description of User
+ *
+ * @author James
+ */
+class App_Model_ProductoFoto extends App_Db_Table_Abstract
+{
+
+    protected $_name = 'productoFoto';
+    
+    const TABLA_FOTO = 'producto';
+    
+    /**
+     * @param array $datos
+     * @param string $condicion para el caso de actualizacion
+     * @return int Identificador de la columna
+     */
+    private function _guardar($datos, $condicion = NULL) 
+    {
+        $id = 0;
+        if (!empty($datos['idproductoFoto'])) {
+            $id = (int) $datos['idproductoFoto'];
+        } 
+        
+        unset($datos['idproductoFoto']);
+        $datos = array_intersect_key($datos, array_flip($this->_getCols()));
+
+        if ($id > 0) {
+            $condicion = '';
+            if (!empty($condicion)) {
+                $condicion = ' AND ' . $condicion;
+            }
+
+            $cantidad = $this->update($datos, 'idproductoFoto = ' . $id . $condicion);
+            $id = ($cantidad < 1) ? 0 : $id;
+        } else {
+            $id = $this->insert($datos);
+        }
+        return $id;
+    }
+
+    public function actualizarDatos($datos) 
+    {   
+        return $this->_guardar($datos);
+    }
+    
+
+}
