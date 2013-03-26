@@ -96,7 +96,6 @@ class App_Model_Usuario extends App_Db_Table_Abstract {
     {
         $query = $this->getAdapter()
                 ->select()->from(array('u' => $this->_name))
-                ->where('u.estado = ?', App_Model_Usuario::ESTADO_ACTIVO)
                 ->where('u.tipoUsuario = ?', App_Model_Usuario::TIPO_ADMIN)
                 ->limit(50);
 

@@ -58,7 +58,6 @@ class App_Model_Proveedor extends App_Db_Table_Abstract
     {
         $query = $this->getAdapter()
                 ->select()->from(array('p' => $this->_name))
-                ->where('p.estado = ?', App_Model_Proveedor::ESTADO_ACTIVO)
                 ->limit(50);
 
         return $this->getAdapter()->fetchAll($query);

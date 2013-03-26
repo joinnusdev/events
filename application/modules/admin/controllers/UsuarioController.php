@@ -78,6 +78,22 @@ class Admin_UsuarioController extends App_Controller_Action_Admin
         $this->_redirect('/admin/usuario');
     }
     
+    
+     public function activarAction()
+    {
+        
+        $modelUsuario = new App_Model_Usuario();
+        $id = $this->_getParam('id');
+        $data = array(
+            'idusuario' => $id,
+            'estado' => App_Model_Usuario::ESTADO_ACTIVO
+        );        
+        
+        $modelUsuario->actualizarDatos($data);
+        $this->_flashMessenger->addMessage("Usuario Activado con exito");
+        $this->_redirect('/admin/usuario');
+    }
+    
 
 }
 
