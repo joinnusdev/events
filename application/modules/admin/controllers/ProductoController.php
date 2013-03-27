@@ -160,7 +160,8 @@ class Admin_ProductoController extends App_Controller_Action_Admin
         $producto = $modelProducto->getProductoPorId($id);
         $this->view->foto = $modelfoto->getFotosProducto($id);
         
-        $form->populate($producto);        
+        $form->populate($producto);
+        
          
         if($this->getRequest()->isPost()){
             $data = $this->getRequest()->getPost();            

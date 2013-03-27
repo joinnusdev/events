@@ -192,14 +192,11 @@
 
 <script src="<?php echo SITE_URL ?>static/js2/admin/producto.js"></script>
 
-<script>
-  $(function() { 
-    $("#fechaInicio").datepicker();
-    $( "#fechaInicio" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-    $("#fechaFin").datepicker();
-    $( "#fechaFin" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+<script>    
+    $("#fechaInicio").datepicker("option", "dateFormat", "yy-mm-dd");
+    $("#fechaFin").datepicker("option", "dateFormat", "yy-mm-dd");
+
     
-  });
   </script>
 <script>
 $("#subcategoria").removeAttr("disabled");
