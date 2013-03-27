@@ -8,9 +8,9 @@
 class App_Model_ProductoFoto extends App_Db_Table_Abstract
 {
 
-    protected $_name = 'productoFoto';
+    protected $_name = 'productofoto';
     
-    const TABLA_FOTO = 'producto';
+    const TABLA_FOTO = 'productofoto';
     
     /**
      * @param array $datos
@@ -44,6 +44,16 @@ class App_Model_ProductoFoto extends App_Db_Table_Abstract
     public function actualizarDatos($datos) 
     {   
         return $this->_guardar($datos);
+    }
+    
+    public function getFotosProducto($idProducto) 
+    {
+        $query = $this->getAdapter()->select()
+                ->from($this->_name)
+                ->where('idproducto = ?', $idProducto)
+                ;
+
+        return $this->getAdapter()->fetchAll($query);
     }
     
 

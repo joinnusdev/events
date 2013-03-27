@@ -90,34 +90,89 @@
                         </div>                        
                         <div class="clear"></div>                        
                         <br>
+                        <?php 
+                        foreach ($this->foto as $value):
+                            if ($value['orden'] == '0') {$p = 1;$name=$value['foto'];$id= $value['idproductoFoto'];}
+                            if ($value['orden'] == '1') {$p1 = 1;$name1=$value['foto'];$id1= $value['idproductoFoto'];}
+                            if ($value['orden'] == '2') {$p2 = 1;$name2=$value['foto'];$id2= $value['idproductoFoto'];}
+                            if ($value['orden'] == '3') {$p3 = 1;$name3=$value['foto'];$id3= $value['idproductoFoto'];}
+                            if ($value['orden'] == '4') {$p4 = 1;$name4=$value['foto'];$id4= $value['idproductoFoto'];}
+                        endforeach;
+                        
+                        ?>
                         
                         <label for="fotoPrincipal" class="span4 no-margin">Foto Principal :</label>
                         <div class="span6 no-margin">
-                            <?php echo $this->form->fotoPrincipal?>
+                            <?php                              
+                            if(isset ($p)) { $a = ELEMENTS_URL. "/productos/" .$name;?>
+                            <a href="<?php echo $a?>"> <?php echo $a?></a>
+                            <strong> <a href="/admin/producto/eliminarfoto/id/<?php echo $id?>/prod/<?php echo $this->producto['idproducto']?>">Eliminar</a>
+                                </strong>
+                            <?php }else {
+                            echo $this->form->fotoPrincipal;
+                            if ($this->form->fotoPrincipal->hasErrors()) echo "Imagen inválida";
+                            }
+                            ?>     
                         </div>                        
                         <div class="clear"></div>
                         
                         <label for="foto1" class="span4 no-margin">Foto :</label>
                         <div class="span6 no-margin">
-                            <?php echo $this->form->foto1?>
+                            <?php                              
+                            if(isset ($p1)) { $a = ELEMENTS_URL. "/productos/" .$name1;?>
+                            <a href="<?php echo $a?>"> <?php echo $a?></a>
+                            <strong> <a href="/admin/producto/eliminarfoto/id/<?php echo $id1?>/prod/<?php echo $this->producto['idproducto']?>">Eliminar</a>
+                                </strong>
+                            <?php }else {
+                            echo $this->form->foto1;
+                            if ($this->form->foto1->hasErrors()) echo "Imagen inválida";
+                            }
+                            ?>
                         </div>                        
                         <div class="clear"></div>
                         
                         <label for="foto2" class="span4 no-margin">Foto :</label>
                         <div class="span6 no-margin">
-                            <?php echo $this->form->foto2?>
+                            <?php                              
+                            if(isset ($p2)) { $a = ELEMENTS_URL. "/productos/" .$name2;?>
+                            <a href="<?php echo $a?>"> <?php echo $a?></a>
+                            <strong> <a href="/admin/producto/eliminarfoto/id/<?php echo $id2?>/prod/<?php echo $this->producto['idproducto']?>">Eliminar</a>
+                                </strong>
+                            <?php }else {
+                            echo $this->form->foto2;
+                            if ($this->form->foto2->hasErrors()) echo "Imagen inválida";
+                            }
+                            ?>
                         </div>                        
                         <div class="clear"></div>
                         
                         <label for="foto3" class="span4 no-margin">Foto :</label>
                         <div class="span6 no-margin">
-                            <?php echo $this->form->foto3?>
+                            <?php                              
+                            if(isset ($p3)) { $a = ELEMENTS_URL. "/productos/" .$name3;?>
+                            <a href="<?php echo $a?>"> <?php echo $a?></a>
+                            <strong> <a href="/admin/producto/eliminarfoto/id/<?php echo $id3?>/prod/<?php echo $this->producto['idproducto']?>">Eliminar</a>
+                                </strong>
+                            <?php }else {
+                            echo $this->form->foto3;
+                            if ($this->form->foto3->hasErrors()) echo "Imagen inválida";
+                            }
+                            ?>
                         </div>                        
                         <div class="clear"></div>
                         
                         <label for="foto4" class="span4 no-margin">Foto :</label>
                         <div class="span6 no-margin">
-                            <?php echo $this->form->foto4?>
+                            <?php                              
+                            if(isset ($p4)) { $a = ELEMENTS_URL. "/productos/" .$name4;?>
+                            <a href="<?php echo $a?>"> <?php echo $a?></a>
+                            <strong> <a href="/admin/producto/eliminarfoto/id/<?php echo $id4?>/prod/<?php echo $this->producto['idproducto']?>">Eliminar</a>
+                                </strong>
+                            <?php }else {
+                            echo $this->form->foto4;
+                            if ($this->form->foto4->hasErrors()) echo "Imagen inválida";
+                            }
+                            ?>
                         </div>                        
                         <div class="clear"></div>
                         
