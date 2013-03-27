@@ -72,7 +72,7 @@
                                     Edit                                            
                                 </a>
                                 
-                                <a class="btn btn-<?php echo ($usuario['estado'] == '1')?'danger':'success';?> " href="/admin/cliente/updateestado/id/<?php echo $usuario["idusuario"]; ?>">
+                                <a class="btn btn-<?php echo ($usuario['estado'] == '1')?'danger':'success';?> " href="/admin/cliente/updateestado/id/<?php echo $usuario["idusuario"]; ?>/est/<?php echo $usuario['estado']?>">
                                     <i class="icon-chevron-down icon-white"></i> 
                                     <?php echo ($usuario['estado'] == '1')?'Bloquear':'Activar';?> 
                                 </a>

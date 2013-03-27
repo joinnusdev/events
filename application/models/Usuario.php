@@ -123,6 +123,22 @@ class App_Model_Usuario extends App_Db_Table_Abstract {
         return $_SERVER['REMOTE_ADDR'];
     }
     
+    public function updateEstado($id, $est) 
+    {   
+        $db = $this->getDefaultAdapter();
+        
+        $update = ($est == 1)?0:1;
+        
+        $data = array(
+            'estado'       => $update
+        );
+        $condicion = 'idusuario = ' . $id  ;
+        
+        $where = $db->quoteInto($condicion);
+        
+        $db->update($this->_name, $data, $where);
+    }
+    
     
     
    

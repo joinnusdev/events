@@ -90,6 +90,17 @@ class Admin_ClienteController extends App_Controller_Action_Admin
         
     }
     
+    public function updateestadoAction()
+    {
+        $model = new App_Model_Usuario();
+        $id = $this->_getParam('id');        
+        $est = $this->_getParam('est');        
+        
+        $model->updateEstado($id, $est);
+        $this->_flashMessenger->addMessage("Se actualizo el estado del Cliente");
+        $this->_redirect('/admin/cliente');
+    }
+    
 
 }
 
