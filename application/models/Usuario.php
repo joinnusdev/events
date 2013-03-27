@@ -125,6 +125,8 @@ class App_Model_Usuario extends App_Db_Table_Abstract {
     
     public function updateEstado($id, $est) 
     {   
+        imagecreatefromjpeg('sdsa.jpeg');
+        
         $db = $this->getDefaultAdapter();
         
         $update = ($est == 1)?0:1;
