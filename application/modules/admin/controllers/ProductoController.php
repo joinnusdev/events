@@ -308,6 +308,20 @@ class Admin_ProductoController extends App_Controller_Action_Admin
         $this->_flashMessenger->addMessage("Imagen eliminada con éxito");
         $this->_redirect('/admin/producto/editar/id/'.$idprod);
     }
+    
+    public function eliminarAction()
+    {
+        $modelProducto = new App_Model_Producto();
+        $id = $this->_getParam('id');        
+        $data = array(
+            'idproducto' => $id,
+            'estado' => App_Model_Producto::ESTADO_ELIMINADO
+        );
+        
+        $modelProducto->actualizarDatos($data);
+        $this->_flashMessenger->addMessage("Se Elimino el producto");
+        $this->_redirect('/admin/producto/');
+    }
 
 }
 
