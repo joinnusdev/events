@@ -1,0 +1,106 @@
+<ul class="breadcrumb">    
+    <li>
+        <a href="/cliente">Clientes</a> <span class="divider">/</span>
+    </li>    
+</ul>
+<div id="content_wrapper">
+     <div id="content">
+         <div class="inner">
+             <form action="" method="post" enctype="multipart/form-data" class="well">
+                <div class="header">
+                    <h3>Edición datos del Cliente</h3>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="clear"></div>
+                        <label for="nombre" class="span5 no-margin">Nombre :</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->nombre->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->nombre->hasErrors()) echo "Ingresa Nombre";?>
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="apellido" class="span5 no-margin">Apellidos :</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->apellido->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->apellido->hasErrors()) echo "Ingresa Apellido";?>
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="sexo" class="span5 no-margin">Sexo:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->sexo->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->sexo->hasErrors()) echo "Ingrese Sexo";?>
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="fechaN" class="span5 no-margin">Fecha nacimiento:</label>
+                        <div class="span5 no-margin">
+                            <?php echo $this->form->fechaNacimiento->setAttrib('class', 'span12')->setAttrib('maxlength', '20')
+                                    ->setAttrib('id', 'fechaReserva')->renderViewHelper();
+                            ?>
+                            <?php if ($this->form->fechaNacimiento->hasErrors()) echo "Ingresa Fecha Nacimiento";?>
+                            
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="tipoDocumento" class="span5 no-margin">Tipo Documento:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->tipoDocumento->setAttrib('class', 'span12')->setAttrib('maxlength', '10')->renderViewHelper();?>                            
+                        </div>
+                        
+                        <div class="clear"></div>
+                        <label for="nroDocumento" class="span5 no-margin">Número Documento:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->nroDocumento->setAttrib('class', 'span12')->setAttrib('maxlength', '10')->renderViewHelper();?>
+                        </div>    
+                        
+                        
+                        <div class="clear"></div>
+                        <label for="email" class="span5 no-margin">Correo:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->correo->setAttrib('class', 'span12')->setAttrib('maxlength', '50')->renderViewHelper();?>
+                            <?php if ($this->form->correo->hasErrors()) echo "Ingresa un Correo válido";?>
+                        </div>
+                        
+                        
+                        <div class="clear"></div>
+                        <label for="direccion" class="span5 no-margin">Dirección:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->direccion->setAttrib('maxlength', '50')->renderViewHelper();?>
+                        </div>
+
+                        
+                        <div class="clear"></div>
+                        <label for="telefono" class="span5 no-margin">Número telefónico:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->telefono->setAttrib('class', 'span12')->setAttrib('maxlength', '10')->renderViewHelper();?>
+                            
+                        </div>    
+                        <div class="clear"></div>
+                        <label for="celular" class="span5 no-margin">Celular:</label>
+                        <div class="span4 no-margin">
+                            <?php echo $this->form->celular->setAttrib('class', 'span12')->setAttrib('maxlength', '12')->renderViewHelper();?>
+                        </div>
+                        <div class="clear"></div>
+                        <?php echo $this->form->csrf; ?>
+                        <?php if ($this->form->csrf->hasErrors()) echo "Intentalo nuevamente";?>
+                    </div>
+                    <div class="clear"></div>
+                                        
+                </div>
+                <div class="form-actions">
+                    <?php echo $this->form->guardar->setAttrib('class', 'btn pull-right')?>                    
+                </div>
+        </form>
+    </div>
+ </div>
+</div>
+
+<script>
+$(document).ready(function(){    
+//    $("#fechaReserva").datepicker();
+    $( "#fechaReserva" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+});
+</script>
+

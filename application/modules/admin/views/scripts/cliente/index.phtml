@@ -57,10 +57,7 @@
                         </tr>
                     </thead>   
                     <tbody role="alert" aria-live="polite" aria-relevant="all">
-                        <?php
-                       foreach ($this->listaUsuario as $usuario):
-                           $foco = 0;
-                      ?>
+                        <?php foreach ($this->listaUsuario as $usuario): ?>
                         <tr class="odd">
                             <td class="  sorting_1"><?php echo $usuario['nombre']?></td>
                             <td class="center "><?php echo $usuario['apellido']?></td>
@@ -70,22 +67,16 @@
                                 <?php echo   $usuario['fechaRegistro']?>
                             </td>
                             <td class="center ">
-                                <a class="btn btn-info" href="/admin/usuario/editar/id/<?php echo $usuario["idusuario"]; ?>">
+                                <a class="btn btn-info" href="/admin/cliente/editar/id/<?php echo $usuario["idusuario"]; ?>">
                                     <i class="icon-edit icon-white"></i>  
                                     Edit                                            
                                 </a>
-                                <?php if ($foco == 1) { ?>
-                                <a class="btn btn-success" href="/admin/usuario/activar/id/<?php echo $usuario["idusuario"]; ?>">
-                                    <i class="icon-zoom-in icon-white"></i> 
-                                    Activar
+                                
+                                <a class="btn btn-<?php echo ($usuario['estado'] == '1')?'danger':'success';?> " href="/admin/cliente/updateestado/id/<?php echo $usuario["idusuario"]; ?>">
+                                    <i class="icon-chevron-down icon-white"></i> 
+                                    <?php echo ($usuario['estado'] == '1')?'Bloquear':'Activar';?> 
                                 </a>
-                                <?php }?>
-                                <?php if ($foco == 0) { ?>
-                                <a class="btn btn-danger" href="/admin/usuario/eliminar/id/<?php echo $usuario["idusuario"]; ?>">
-                                    <i class="icon-trash icon-white"></i> 
-                                    Delete
-                                </a>
-                                <?php }?>
+                                
                             </td>
                         </tr>
                         <?php  endforeach; ?>
