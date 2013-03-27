@@ -359,8 +359,8 @@ class Admin_ProductoController extends App_Controller_Action_Admin
             // Guardar la imagen en un archivo y liberar memoria
             imagejpeg($im, $rutaImagen);
             imagedestroy($im);            
-        } catch (Zend_Exception $e) {            
-           $this->log->debug("Imagenes: " . $e->getMessage());
+        } catch (Zend_Exception $e) {
+           $this->log->debug("Imagenes : " . $e->getMessage());
         }
         
     }
