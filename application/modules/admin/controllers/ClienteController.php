@@ -9,55 +9,96 @@ class Admin_ClienteController extends App_Controller_Action_Admin
     }
     
     public function indexAction()
-    {      	
-        //$this->_helper->layout->disableLayout();
-        
-        $modelUsuario = new App_Model_Cliente();
-        $listaCliente = $modelUsuario->listarCliente();
-        $this->view->listaCliente = $listaCliente;
+    {   
+        $modelUsuario = new App_Model_Usuario();
+        $listaUsuario = $modelUsuario->listarUsuario(App_Model_Usuario::TIPO_CLIENTE);
+        $this->view->listaUsuario = $listaUsuario;
     }
     
     public function crearAction()
     {
-        //datepicker
-        $this->view->headLink()->appendStylesheet(
-            $this->getConfig()->app->mediaUrl . '/css/datepicker-bootstrap/datepicker.css'
-        );
-        $this->view->headScript()->appendFile(
-            $this->getConfig()->app->mediaUrl . '/js/datepicker-bootstrap/bootstrap-datepicker.js'
-        );
-        $form = new App_Form_CrearCliente();
+        $form = new App_Form_CrearCliente();        
         $this->view->form = $form; 
-        if($this->getRequest()->isPost()){            
+        $form->clave->setRequired(FALSE); 
+        
+        if($this->getRequest()->isPost()){
             
             $data = $this->getRequest()->getPost();
             
             if ($form->isValid($data)) {
-                $modelCliente = new App_Model_Cliente();
+                $model = new App_Model_Usuario();
                 $fecha = Zend_Date::now()->toString('YYYY-MM-dd HH:mm:ss');
-                $data['fechaUltimaVisita'] = $fecha;
+                $data['fechaUltimoAcceso'] = $fecha;
+                $data['email'] = $data['correo'];
+                $data['fechaRegistro'] = $fecha;
+                $data['ultimaIp'] = $model->_getRealIP();
                 $data['estado'] = App_Model_Cliente::ESTADO_ACTIVO;
-                $data['totalVisitas'] = 1;
-                $data['idTipoUsuario'] = App_Model_User::TIPO_CLIENTE;
-                $id = $modelCliente->actualizarDatos($data);
+                $data['numeroVisita'] = 1;
+                $data['tipoUsuario'] = App_Model_Usuario::TIPO_CLIENTE;
+                $id = $model->actualizarDatos($data);
                 
                 $this->_flashMessenger->addMessage("Cliente guardado con exito");
-                $this->_redirect('/cliente');
+                $this->_redirect('/admin/cliente');
                 
             } else {
-                $form->populate($data);                
+                $form->populate($data);
+                var_dump($form->getMessages());
             }
         }
     }
     
     public function editarAction()
-    {
+    {        
+        $model = new App_Model_Usuario();
+        $id = $this->_getParam('id');
+        $user = $model->getUsuarioPorId($id, App_Model_Usuario::TIPO_CLIENTE);
+        
+        $form = new App_Form_CrearCliente();
+        $user['correo'] = $user['email'];
+        $form->populate($user);
+        $this->view->form = $form; 
+        
+        $form->clave->setRequired(FALSE); 
+        
+        if($this->getRequest()->isPost()){
+            
+            $data = $this->getRequest()->getPost();
+            
+            if ($form->isValid($data)) {
+                
+                $fecha = Zend_Date::now()->toString('YYYY-MM-dd HH:mm:ss');
+                $data['fechaUltimoAcceso'] = $fecha;
+                $data['idusuario'] = $user['idusuario'];
+                $data['email'] = $data['correo'];
+                $data['ultimaIp'] = $model->_getRealIP();
+                $data['tipoUsuario'] = App_Model_Usuario::TIPO_CLIENTE;
+                $id = $model->actualizarDatos($data);
+                
+                $this->_flashMessenger->addMessage("Cliente editado con exito");
+                $this->_redirect('/admin/cliente');
+                
+            } else {
+                $form->populate($data);
+                var_dump($form->getMessages());
+            }
+        }
         
     }
     
     public function eliminarAction()
     {
         
+    }
+    
+    public function updateestadoAction()
+    {
+        $model = new App_Model_Usuario();
+        $id = $this->_getParam('id');        
+        $est = $this->_getParam('est');        
+        
+        $model->updateEstado($id, $est);
+        $this->_flashMessenger->addMessage("Se actualizo el estado del Cliente");
+        $this->_redirect('/admin/cliente');
     }
     
 

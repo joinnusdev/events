@@ -11,7 +11,7 @@ class Admin_UsuarioController extends App_Controller_Action_Admin
     public function indexAction()
     {      	
         $modelUsuario = new App_Model_Usuario();
-        $listaUsuario = $modelUsuario->listarUsuario();
+        $listaUsuario = $modelUsuario->listarUsuario(App_Model_Usuario::TIPO_ADMIN);
         $this->view->listaUsuario = $listaUsuario;
     }
     
@@ -46,7 +46,7 @@ class Admin_UsuarioController extends App_Controller_Action_Admin
         $modelUsuario = new App_Model_Usuario();
         $form = new App_Form_CrearUsuario();
         $id = $this->_getParam('id');
-        $usuario = $modelUsuario->getUsuarioPorId($id);
+        $usuario = $modelUsuario->getUsuarioPorId($id, App_Model_Usuario::TIPO_ADMIN);
         $form->populate($usuario);        
         if($this->getRequest()->isPost()){            
             $data = $this->getRequest()->getParams();            
