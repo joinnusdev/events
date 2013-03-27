@@ -11,7 +11,7 @@ class Admin_UsuarioController extends App_Controller_Action_Admin
     public function indexAction()
     {      	
         $modelUsuario = new App_Model_Usuario();
-        $listaUsuario = $modelUsuario->listarUsuario();
+        $listaUsuario = $modelUsuario->listarUsuario(App_Model_Usuario::TIPO_ADMIN);
         $this->view->listaUsuario = $listaUsuario;
     }
     

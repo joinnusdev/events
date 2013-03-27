@@ -98,12 +98,9 @@
 </div>
 
 <script>
-$(document).ready(function(){
-    $('#fechaReserva').datepicker({
-        format: 'yyyy-mm-dd',
-        todayBtn: 'linked',
-        language: 'es'
-    });
+$(document).ready(function(){    
+    $("#fechaReserva").datepicker();
+    $( "#fechaReserva" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 });
 </script>
 
