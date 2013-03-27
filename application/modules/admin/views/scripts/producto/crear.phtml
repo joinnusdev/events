@@ -137,19 +137,14 @@
 
 <script src="<?php echo SITE_URL ?>static/js2/admin/producto.js"></script>
 
-<script>
-$(document).ready(function(){
-    $('#fechaInicio').datepicker({
-        format: 'yyyy-mm-dd',
-        todayBtn: 'linked',
-        language: 'es'
-    });
+
+
+  <script>
+  $(function() { 
+    $("#fechaInicio").datepicker();
+    $( "#fechaInicio" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+    $("#fechaFin").datepicker();
+    $( "#fechaFin" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
     
-    $('#fechaFin').datepicker({
-        format: 'yyyy-mm-dd',
-        todayBtn: 'linked',
-        language: 'es'
-    });    
-        
-});
-</script>
+  });
+  </script>
